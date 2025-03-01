@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Fullscreen PNG Background with Box</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+            body, html {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #faf3f5; /* Warna latar belakang */
+    position: relative;
+}
+
+/* PNG Overlay */
+.overlay {
+    
+   position: absolute;
+    top: 40%; /* Atur supaya agak ke atas */
+    left: 50%;
+    transform: translate(-50%, -60%);
+    width: 385px; /* Ukuran  PNG */
+    height: auto; /* Agar proporsional */
+}
+
+
+.slide {
+    position: fixed;
+    top: 65px; /* Jarak dari atas */
+    right: 7px; /* Jarak dari kanan */
+    width: 360px; /* Lebar PNG */
+    height: auto; /* Agar proporsional */
+}
+
+        /* Kotak putih dengan border */
+        .box {
+            width: 800%; /* Lebar kotak */
+            max-width: 390px; /* Maksimal lebar */
+            padding: 130px;
+            background: rgb(251, 250, 250); /* Warna putih */
+            border: 3px solid rgb(255, 255, 255); /* Border hitam */
+            border-radius: 10px; /* Sudut sedikit membulat */
+            text-align: center;
+            color: black; /* Warna teks hitam */
+            position: absolute;
+            top: 84%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .login-btn {
+    position: absolute;
+    top: 140px;  /* Geser ke bawah dari atas */
+    right: 8px; /* Geser ke kiri dari kanan */
+    padding: 15px 160px;
+    font-size: 18px;
+    color: white;
+    background: #2984f1;
+    border: 3px solid white; /* Border putih */
+    border-radius: 50px; /* Sudut membulat */
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.login-btn:active {
+    background: #2984f1 !important; /* Tetap biru saat diklik */
+    color: white !important; /* Tetap putih saat diklik */
+    border: 3px solid white;
+}
+
+
+        .money {
+            position: absolute;
+            top: 20px;
+            right: 310px;
+            width: 50px; /* Ukuran kecil */
+            height: auto;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+        .pick {
+            position: absolute;
+            top: 20px;
+            right: 236px;
+            width: 50px; /* Ukuran kecil */
+            height: auto;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+        .qr {
+            position: absolute;
+            top: 20px;
+            right: 165px;
+            width: 50px; /* Ukuran kecil */
+            height: auto;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+        .qrtf {
+            position: absolute;
+            top: 20px;
+            right: 95px;
+            width: 50px; /* Ukuran kecil */
+            height: auto;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+        .play {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            width: 50px; /* Ukuran kecil */
+            height: auto;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+        .call {
+             position: absolute;
+             top: 10px;  /* Jarak dari atas */
+             right: 10px; /* Jarak dari kanan */
+             width: 35px; /* Ukuran tetap */
+             height: auto;
+             cursor: pointer;
+             border-radius: 50%;
+        }
+
+        .tap-text5 {
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            position: absolute;
+            top: 80px; /* Posisi di bawah play.png */
+            right: 1px;
+            font-size: 10px;
+            color: rgb(86, 86, 86);
+            text-align: center;
+            width: 100px;
+        }
+        .tap-text4 {
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            position: absolute;
+            top: 80px; /* Posisi di bawah play.png */
+            right: 70px;
+            font-size: 10px;
+            color: rgb(86, 86, 86);
+            text-align: center;
+            width: 100px;
+        }
+        .tap-text41 {
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            position: absolute;
+            top: 93px; /* Posisi di bawah play.png */
+            right: 68px;
+            font-size: 10px;
+            color: rgb(86, 86, 86);
+            text-align: center;
+            width: 100px;
+        }
+        .tap-text3 {
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            position: absolute;
+            top: 81px; /* Posisi di bawah play.png */
+            right: 139px;
+            font-size: 10px;
+            color: rgb(86, 86, 86);
+            text-align: center;
+            width: 100px;
+        }
+        .tap-text2 {
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            position: absolute;
+            top: 82px; /* Posisi di bawah play.png */
+            right: 210px;
+            font-size: 10px;
+            color: rgb(86, 86, 86);
+            text-align: center;
+            width: 100px;
+        }
+        .tap-text1 {
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            position: absolute;
+            top: 80px; /* Posisi di bawah play.png */
+            right: 283px;
+            font-size: 12px;
+            color: rgb(86, 86, 86);
+            text-align: center;
+            width: 100px;
+        }
+        .screenshot-block {
+           position: fixed;
+           top: 0;
+           left: 0;
+           width: 100%;
+           height: 100%;
+           background: rgba(255, 255, 255, 0.01); /* Hampir transparan */
+           z-index: 9999;
+           pointer-events: none;
+}
+
+    </style>
+</head>
+<body>
+    <div>
+        <div class="screenshot-block"></div>
+        <img src="bg.webp" class="overlay">
+        <img src="call.png" alt="Menu" class="call" id="playButton0">
+    </div>
+    <div class="box">
+        <img src="slide.png" class="slide">
+        <button class="login-btn" onclick="pindahPage()">Login</button>
+        <img src="money.webp" alt="Menu" class="money" id="playButton1">
+        <div class="tap-text1">e-money</div>
+        <img src="pick.webp" alt="Menu" class="pick" id="playButton2">
+        <div class="tap-text2">Quick Pick</div>
+        <img src="bayar.webp" alt="Menu" class="qr" id="playButton3">
+        <div class="tap-text3">QR Bayar</div>
+        <img src="tf.webp" alt="Menu" class="qrtf" id="playButton4">
+        <div class="tap-text4">QR Terima</div>
+        <div class="tap-text41">Transfer</div>
+        <img src="play.webp" alt="Menu" class="play" id="playButton5">
+        <div class="tap-text5">Tap to Play</div>
+    </div>
+   
+    <script>
+         document.getElementById("playButton0").addEventListener("click", function() {
+            window.location.href = "call.html";
+        });
+         document.getElementById("playButton1").addEventListener("click", function() {
+            window.location.href = "money.html";
+        });
+         document.getElementById("playButton2").addEventListener("click", function() {
+            window.location.href = "pick.html";
+        });
+         document.getElementById("playButton3").addEventListener("click", function() {
+            window.location.href = "bayar.html";  
+        });
+
+        document.getElementById("playButton4").addEventListener("click", function() {
+            window.location.href = "terima.html";  
+        });
+         document.getElementById("playButton5").addEventListener("click", function() {
+            window.location.href = "play.html";
+        });
+        document.addEventListener("contextmenu", function(event) {
+        event.preventDefault();
+    });
+
+        function pindahPage() {
+            window.location.href = "login.html";
+        }
+
+        window.addEventListener("scroll", function() {
+    window.scrollTo(0, 0);
+});
+
+    </script>
+</body>
+</html>
