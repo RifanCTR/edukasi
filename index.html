@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Fullscreen PNG Background with Box</title>
     <style>
         * {
@@ -22,11 +23,12 @@
 
 /* PNG Overlay */
 .overlay {
-    position: fixed;
-    top: 60px; /* Jarak dari atas */
-    right: 1px; /* Jarak dari kanan */
+    position: absolute;
+    top: 50px; /* Jarak dari atas */
+    right: -5px; /* Jarak dari kanan */
     width: 385px; /* Lebar PNG */
     height: auto; /* Agar proporsional */
+    
 }
 
 .slide {
@@ -188,11 +190,22 @@
             text-align: center;
             width: 100px;
         }
+        .screenshot-block {
+           position: fixed;
+           top: 0;
+           left: 0;
+           width: 100%;
+           height: 100%;
+           background: rgba(255, 255, 255, 0.01); /* Hampir transparan */
+           z-index: 9999;
+           pointer-events: none;
+}
+
     </style>
 </head>
 <body>
     <div>
-       
+        <div class="screenshot-block"></div>
         <img src="bg.webp" class="overlay">
         <img src="call.png" alt="Menu" class="call" id="playButton0">
     </div>
@@ -232,7 +245,9 @@
          document.getElementById("playButton5").addEventListener("click", function() {
             window.location.href = "play.html";
         });
-     
+        document.addEventListener("contextmenu", function(event) {
+        event.preventDefault();
+    });
 
         function pindahPage() {
             window.location.href = "dashboard.html";
